@@ -15,15 +15,15 @@
       <!-- Example row of columns -->
       <div class="row">
       
-      @foreach($articles as $article)
+     @if($article)
       
-      <div class="col-md-4">
+      <div>
           <h2>{{ $article->title }}</h2>
-          <p> {{ $article-> descr }} </p>
-          <p><a class="btn btn-default" href="{{route('articleShow', ['id'=>$article->id])}}" role="button">Details &raquo;</a></p>
+          <p> {{ $article-> text }} </p>
+          
         </div>
       
-      @endforeach
+  @endif
         
       </div>
 

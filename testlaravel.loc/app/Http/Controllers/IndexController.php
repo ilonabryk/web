@@ -11,19 +11,40 @@ use App\Article;
 class IndexController extends Controller
 {
     //
+    
+    protected $message;
+    protected $header;    
+    public function __construct(){
+		
+		$this->header = 'Hello World!!!';
+    	$this->message = 'This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.';
+		
+	}
+    
     public function index() {
     	
-    	$header = 'Hello World!!!';
-    	$message = 'This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.';
+    	
 		
 		$articles = Article::select(['id', 'title', 'descr'])->get();
 		
 		//dump($articles);
 		
-	return view('page')->with(['message'=>$message,
-		'header' => $header, 
+	return view('page')->with(['message'=>$this->message,
+		'header' => $this->header, 
 		'articles' => $articles]);
 		
 	}
+  
+  public function show($id) {
+  	
+  	//$article = Article::find($id);
+  	$article = Article::select(['id', 'title', 'text'])->where('id',$id)->first();
+  	
+  	//dump($article);
+  	
+  	return view('article-content')->with(['message'=>$this->message,
+		'header' => $this->header, 
+		'article' => $article]);
+  }
     
 }
