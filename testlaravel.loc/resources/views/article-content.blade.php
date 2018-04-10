@@ -1,7 +1,7 @@
 @extends('layouts.site')
 
-@section('content')
 
+@section('content')
 <!-- Main jumbotron for a primary marketing message or call to action -->
     <div class="jumbotron">
       <div class="container">
@@ -15,16 +15,18 @@
       <!-- Example row of columns -->
       <div class="row">
       
-     @if($article)
       
-      <div>
+      @if($article)
+      	
+      	<div>
           <h2>{{ $article->title }}</h2>
-          <p> {{ $article-> text }} </p>
+          <p>{!! $article->text!!}</p>
           
         </div>
+     
+      @endif	
       
-  @endif
-        
+      
       </div>
 
       <hr>
@@ -34,4 +36,4 @@
       </footer>
     </div> <!-- /container -->
     
-    @endsection
+@endsection    
